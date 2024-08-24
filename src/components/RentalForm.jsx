@@ -9,10 +9,10 @@ export default function RentalForm(){
                     <option value="Real Car 2">Real Car 2</option>
                     <option value="Real Car 3">Real Car 3</option>
                 </select>
-
+                <br/>
                 <label>Select A Trip Start Date</label>
                 <input type="datetime-local"></input>
-
+                <br/>
                 <label>Select A Trip End Date</label>
                 <input type="datetime-local"></input>
             </form>
