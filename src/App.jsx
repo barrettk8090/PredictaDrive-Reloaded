@@ -1,32 +1,27 @@
 import { useState } from 'react'
 // import Moralis from 'moralis'
 import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from './components/Home'
-import RentalForm from './components/RentalForm'
+import Balances from './components/Balances.jsx'
 
 function App() {
-//   const Moralis = require("moralis").default;
-
-//   async function startMoralis(){
-//     await Moralist.start({
-//       apiKey: import.meta.env.VITE_MORALIS_API_KEY
-//     })
-//     console.log(Moralis)
-// }
-
-// startMoralis();
 
 
 
 
-  return (
-    <>
-      <div>
-        <Home/>
-        <RentalForm/>
-      </div>
-    </>
-  )
+return (
+  <>
+    <div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" Component={Home}/>
+        <Route path="/balances" Component={Balances}/>
+      </Routes>
+    </BrowserRouter>
+    </div>
+  </>
+)
 }
 
 export default App

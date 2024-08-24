@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { useWalletInfo } from '@web3modal/wagmi/react'
 import ConnectButton from "../ConnectButton"
+import RentalForm from './RentalForm';
 
 export default function Home(){
     const { address, isConnected } = useAccount();
@@ -27,6 +28,7 @@ export default function Home(){
                 <h1>PredictaDrive</h1>
                 <h2>Using DIMO</h2>
                 <ConnectButton/>
+                <RentalForm/>
             </div>
         </>
     )
