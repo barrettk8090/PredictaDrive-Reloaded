@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { useWalletInfo } from '@web3modal/wagmi/react'
-import ConnectButton from "../ConnectButton"
+import Header from './Header';
 import RentalForm from './RentalForm';
 import NFTJSON from './NFTJSON';
 
@@ -26,9 +26,7 @@ export default function Home(){
     return(
         <>
             <div>
-                <h1>PredictaDrive</h1>
-                <h2>Using DIMO</h2>
-                <ConnectButton/>
+                <Header/>
                 <NFTJSON address={address}/>
                 <RentalForm/>
             </div>
