@@ -17,8 +17,19 @@ export default function NFTJSON({ address }){
 
     console.log(nftJson)
 
+    const getImageUrl = (metadata) => {
+        try {
+          const parsedMetadata = JSON.parse(metadata);
+          return parsedMetadata.image;
+        } catch (error) {
+          console.error("Error parsing metadata:", error);
+          return null;
+        }
+      };
+
     const singleNFT = nftJson.map(item => {
         if (item.name === "DIMO Vehicle ID"){
+            const imageUrl = getImageUrl(item.metadata);
             return(
                 <div>
                     <p>Token ID: {item.token_id}</p>
@@ -26,6 +37,7 @@ export default function NFTJSON({ address }){
                     <p>Owner of: {item.owner_of}</p>
                     <p>Token Address: {item.token_address}</p>
                     <p>Token URI: {item.token_uri}</p>
+                    <img src={imageUrl}></img>
                 </div>
             )
         }

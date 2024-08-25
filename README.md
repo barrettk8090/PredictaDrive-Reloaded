@@ -14,6 +14,7 @@ In order to properly run and test PredictaDrive, you'll need to get both the ser
 1. On the frontend, verify that the Connect Wallet button opens the Wallet Connect flow.
 2. Try connecting your wallet via the address that is associated with your DIMO account.
 3. Ensure that the page updates with NFT details about your vehicle including Token IDs, Metadata, Owner Of, Token Address, and Token URI.
+4. Test that you can see your NFT images at the bottom.
 
 Not yet working:
 * Disconnecting your wallet does not yet auto clear the pace
