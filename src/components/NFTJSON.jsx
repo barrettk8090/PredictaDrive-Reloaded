@@ -8,11 +8,12 @@ export default function NFTJSON({ address }){
 
     useEffect(() => {
         // TODO: Replace address with real address 
-        axios(`http://localhost:4000/nft/${address}`)
-        .then(({ data }) => {
-            setNftJson(data.result);
-        })
-    })
+        if (address){
+            axios(`http://localhost:4000/nft/${address}`)
+            .then(({ data }) => {
+                setNftJson(data.result);
+        })}
+    }, [address, nftJson])
 
     console.log(nftJson)
 
@@ -32,7 +33,7 @@ export default function NFTJSON({ address }){
 
     return(
         <>
-            {singleNFT}
+            {nftJson ? singleNFT : <></>}
         </>
     )
 }
