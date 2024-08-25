@@ -13,7 +13,7 @@ export default function NFTJSON({ address }){
             .then(({ data }) => {
                 setNftJson(data.result);
         })}
-    }, [address, nftJson])
+    }, [address])
 
     console.log(nftJson)
 
