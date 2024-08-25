@@ -32,12 +32,16 @@ export default function NFTJSON({ address }){
             const imageUrl = getImageUrl(item.metadata);
             return(
                 <div>
-                    <p>Token ID: {item.token_id}</p>
-                    <p>Metadata: {item.metadata}</p>
-                    <p>Owner of: {item.owner_of}</p>
-                    <p>Token Address: {item.token_address}</p>
-                    <p>Token URI: {item.token_uri}</p>
-                    <img src={imageUrl}></img>
+                    <h3>Vehicle Info: </h3>
+                    <div>
+                        <p>Token ID: {item.token_id}</p>
+                        <p>Metadata: {item.metadata}</p>
+                        <p>Owner of: {item.owner_of}</p>
+                        <p>Token Address: {item.token_address}</p>
+                        <p>Token URI: {item.token_uri}</p>
+                        <p>Associated NFT Image:</p>
+                        <img className="nft-image" src={imageUrl}></img>
+                    </div>
                 </div>
             )
         }
