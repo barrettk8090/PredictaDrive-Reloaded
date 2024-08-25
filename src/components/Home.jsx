@@ -29,7 +29,7 @@ export default function Home(){
                 <h1>PredictaDrive</h1>
                 <h2>Using DIMO</h2>
                 <ConnectButton/>
-                <NFTJSON/>
+                <NFTJSON address={address}/>
                 <RentalForm/>
             </div>
         </>
