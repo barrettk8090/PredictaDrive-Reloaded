@@ -19,7 +19,6 @@ export default function Home(){
                 walletInfoName: walletInfo.name,
                 walletInfoIcon: walletInfo.icon
             }
-            console.log(walletDetails);
         }
     }, [isConnected, address, balance])
 
