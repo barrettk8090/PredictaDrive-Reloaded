@@ -9,9 +9,23 @@
   src: url(./Syncrone-Oblique.ttf);
 }
 
+@font-face{
+  font-family: Urbanist-Regular;
+  src: url(./Urbanist-Regular.ttf)
+}
+
+
 h1, h2{
   font-family: Syncrone;
   margin: 2rem;
+}
+
+p, input, select, label {
+  font-family: Urbanist-Regular;
+}
+
+p{
+  font-size:1.2rem;
 }
 
 .disconnected-hero{
