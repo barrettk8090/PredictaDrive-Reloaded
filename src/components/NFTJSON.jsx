@@ -28,8 +28,11 @@ export default function NFTJSON({ address }){
     const getCarMMY = (metadata) => {
         try {
             const parsedMetadata = JSON.parse(metadata);
-            console.log(parsedMetadata.attributes)
-            return parsedMetadata.attributes;
+            let MMY = ""
+            for (let details of parsedMetadata.attributes){
+                MMY += (details.value + " ")
+            }
+            return MMY
         } catch (error) {
             console.error("Error parsing metadata:", error);
             return null;
@@ -45,13 +48,13 @@ export default function NFTJSON({ address }){
                 <div>
                     <h3>Vehicle Info: </h3>
                     <div>
+                        <p>Car MMY: {attributes}</p>
                         <p>Token ID: {item.token_id}</p>
                         <p>Metadata: {item.metadata}</p>
                         <p>Owner of: {item.owner_of}</p>
                         <p>Token Address: {item.token_address}</p>
                         <p>Token URI: {item.token_uri}</p>
                         <p>Associated NFT Image:</p>
-                        
                         <img className="nft-image" src={imageUrl}></img>
                     </div>
                 </div>
