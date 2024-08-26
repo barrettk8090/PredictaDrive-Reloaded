@@ -59,24 +59,25 @@ export default function RentalForm({ address }){
 
     return(
         <div>
-            <h2>Enter Your Car Information</h2>
+            <h2 className="rental-header">Enter Your Car Information</h2>
+            <p className="rental-header">Below, choose the DIMO vehicle that will be rented, along with the aniticpated start and end dates for the trip. You'll enter driver details next.</p>
             <div id="rental-form-container">
                 <div className="nft-img-container">
                     {nftImage && <img className="nft-img" src={nftImage}/>}
                 </div>
                 <form className="rental-form">
-                    <label>Select A DIMO Vehicle</label>
+                    <label>Choose Your Car</label>
                     <select>
                         {singleNFTCarMMY}
                     </select>
                     <br/>
-                    <label>Select A Trip Start Date</label>
+                    <label>When Does the Trip Start?</label>
                     <input 
                     type="datetime-local"
                     min={minDate}
                     />
                     <br/>
-                    <label>Select A Trip End Date</label>
+                    <label>When Does the Trip End?</label>
                     <input 
                     type="datetime-local"
                     min={minDate}
