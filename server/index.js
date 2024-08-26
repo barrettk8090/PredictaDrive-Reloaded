@@ -5,13 +5,14 @@ const cors = require("cors");
 const { EvmChain } = require("@moralisweb3/common-evm-utils");
 const app = express();
 const port = 4000;
+const LOCALHOST = process.env.LOCALHOST;
 
 // allow access to React app domain
 const localhost = process.env.LOCALHOST;
 
 app.use(
     cors({
-      origin: localhost,
+      origin: LOCALHOST,
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization']
