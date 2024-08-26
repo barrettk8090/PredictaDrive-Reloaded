@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { useWalletInfo } from '@web3modal/wagmi/react'
 import Header from './Header';
@@ -8,7 +8,7 @@ import NFTJSON from './NFTJSON';
 export default function Home(){
     const { address, isConnected } = useAccount();
     const { data: balance } = useBalance({ address });
-    const { walletInfo } = useWalletInfo();    
+    const { walletInfo } = useWalletInfo();  
 
     useEffect(() => {
         if(isConnected) {
@@ -22,12 +22,13 @@ export default function Home(){
         }
     }, [isConnected, address, balance])
 
+
     return(
         <>
             <div>
                 <Header/>
-                <NFTJSON address={address}/>
-                <RentalForm/>
+                {/* <NFTJSON address={address}/> */}
+                <RentalForm address={ address }/>
             </div>
         </>
     )

@@ -43,12 +43,12 @@ export default function NFTJSON({ address }){
     const singleNFT = nftJson.map(item => {
         if (item.name === "DIMO Vehicle ID"){
             const imageUrl = getImageUrl(item.metadata);
-            const attributes = getCarMMY(item.metadata)
+            const carMMY = getCarMMY(item.metadata)
             return(
                 <div>
                     <h3>Vehicle Info: </h3>
                     <div>
-                        <p>Car MMY: {attributes}</p>
+                        <p>Car MMY: {carMMY}</p>
                         <p>Token ID: {item.token_id}</p>
                         <p>Metadata: {item.metadata}</p>
                         <p>Owner of: {item.owner_of}</p>
