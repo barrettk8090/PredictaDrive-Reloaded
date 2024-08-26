@@ -11,10 +11,20 @@
 
 h1, h2{
   font-family: Syncrone;
+  margin: 2rem;
 }
 
 .disconnected-hero{
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.connected-main{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header{
