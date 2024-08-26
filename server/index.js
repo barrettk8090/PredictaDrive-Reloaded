@@ -7,9 +7,11 @@ const app = express();
 const port = 4000;
 
 // allow access to React app domain
+const localhost = process.env.LOCALHOST;
+
 app.use(
     cors({
-      origin: "http://localhost:5173",
+      origin: localhost,
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization']
