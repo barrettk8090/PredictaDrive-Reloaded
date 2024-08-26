@@ -4,6 +4,15 @@
   /* padding: 2rem; */
 }
 
+@font-face {
+  font-family: Syncrone;
+  src: url(./Syncrone-Oblique.ttf);
+}
+
+h1, h2{
+  font-family: Syncrone;
+}
+
 .header{
   margin: 0;
   display:flex;
