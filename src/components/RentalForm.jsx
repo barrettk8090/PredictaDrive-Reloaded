@@ -58,9 +58,9 @@ export default function RentalForm({ address }){
     const minDate = formatDate(now);
 
     return(
-        <>
+        <div>
+            <h2>Enter Your Car Information</h2>
             <div id="rental-form-container">
-                <h2>Enter Your Car Information</h2>
                 <div className="nft-img-container">
                     {nftImage && <img className="nft-img" src={nftImage}/>}
                 </div>
@@ -84,6 +84,6 @@ export default function RentalForm({ address }){
                     <button>Next</button>
                 </form>
             </div>
-        </>
+        </div>
     )
 }

@@ -27,8 +27,8 @@ export default function Home(){
         <div>
             <Header/>
             {!isConnected? (
-                <div>
-                    <h2>Get Connected</h2>
+                <div className="disconnected-hero">
+                    <h1>Lets Get Connected</h1>
                     <p>In order to begin, please connect your wallet that's linked to your DIMO account. </p>
                 </div>
             ) : 
