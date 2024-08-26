@@ -24,12 +24,19 @@ export default function Home(){
 
 
     return(
-        <>
+        <div>
+            <Header/>
+            {!isConnected? (
+                <div>
+                    <h2>Get Connected</h2>
+                    <p>In order to begin, please connect your wallet that's linked to your DIMO account. </p>
+                </div>
+            ) : 
             <div>
-                <Header/>
                 {/* <NFTJSON address={address}/> */}
                 <RentalForm address={ address }/>
             </div>
-        </>
+            }
+        </div>
     )
 }
