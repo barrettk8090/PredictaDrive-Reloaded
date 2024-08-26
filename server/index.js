@@ -8,7 +8,6 @@ const port = 4000;
 const LOCALHOST = process.env.LOCALHOST;
 
 // allow access to React app domain
-const localhost = process.env.LOCALHOST;
 
 app.use(
     cors({
