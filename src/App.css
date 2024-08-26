@@ -11,20 +11,24 @@
   justify-content: space-between;
 }
 
-#rental-form{
+#rental-form-container{
   display:flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  border: 1px solid black;
+  border: 3px solid black;
   border-radius: 5px;
   margin:20px;
+}
+
+.rental-form{
+  padding-top:40px;
 }
 
 input, label{
   margin: 20px;
 }
 
-.nft-image{
+.nft-img{
   width:30%;
 }

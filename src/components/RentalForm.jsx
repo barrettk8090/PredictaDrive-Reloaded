@@ -24,7 +24,6 @@ export default function RentalForm({ address }){
         }
     }, [nftJson]);
     
-
     // Parse the metadata in the NFT to get the Make, Model, and Year of the users vehicles
     const getCarMMY = (metadata) => {
         try {
@@ -49,25 +48,41 @@ export default function RentalForm({ address }){
         }
     })
 
+    // Setup date and enforce future-only dates in the form below
+    const now = new Date();
+
+    const formatDate = (date) => {
+        return date.toISOString().slice(0, 16);
+    };
+
+    const minDate = formatDate(now);
+
     return(
         <>
-            <div id="rental-form">
+            <div id="rental-form-container">
                 <h2>Enter Your Car Information</h2>
-                <form>
+                <div className="nft-img-container">
+                    {nftImage && <img className="nft-img" src={nftImage}/>}
+                </div>
+                <form className="rental-form">
                     <label>Select A DIMO Vehicle</label>
                     <select>
                         {singleNFTCarMMY}
                     </select>
                     <br/>
                     <label>Select A Trip Start Date</label>
-                    <input type="datetime-local"></input>
+                    <input 
+                    type="datetime-local"
+                    min={minDate}
+                    />
                     <br/>
                     <label>Select A Trip End Date</label>
-                    <input type="datetime-local"></input>
+                    <input 
+                    type="datetime-local"
+                    min={minDate}
+                    />
+                    <button>Next</button>
                 </form>
-                <div className="nft-img-container">
-                    {nftImage && <img src={nftImage}/>}
-                </div>
             </div>
         </>
     )
