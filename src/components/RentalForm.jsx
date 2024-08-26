@@ -4,57 +4,49 @@ import axios from 'axios';
 export default function RentalForm({ address }){
     const [nftJson, setNftJson] = useState([]);
     const [nftImage, setNftImage] = useState("");
+    const [selectedCar, setSelectedCar] = useState(0);
 
     // Retrieve a users NFTs based on their connected wallet address
     useEffect(() => {
-        if (address){
+        if (address) {
             axios(`http://localhost:4000/nft/${address}`)
             .then(({ data }) => {
-                setNftJson(data.result);
-        })}
-    }, [address])
+                const dimoVehicles = data.result.filter(nft => nft.name === "DIMO Vehicle ID");
+                setNftJson(dimoVehicles);
+                if (dimoVehicles.length > 0) {
+                    updateNftImage(dimoVehicles[0].token_id);
+                }
+        })};
+    }, [address]);
 
-    // Retrieve the NFT image based on tokenID
-    // TODO: RN, only works for 1 Nft, need to make dynamic based on the car selected in the dropdown
-    useEffect(() => {
-        const dimoVehicle = nftJson.find(singleCar => singleCar.name === "DIMO Vehicle ID");
-        if (dimoVehicle) {
-            const tokenId = dimoVehicle.token_id;
-            setNftImage(`https://devices-api.dimo.zone/v1/vehicle/${tokenId}/image`);
-        }
-    }, [nftJson]);
+    // Update the NFT based on a selected car in the dropdown form
+    const updateNftImage = (tokenId) => {
+        setNftImage(`https://devices-api.dimo.zone/v1/vehicle/${tokenId}/image`);
+    }
     
     // Parse the metadata in the NFT to get the Make, Model, and Year of the users vehicles
     const getCarMMY = (metadata) => {
         try {
             const parsedMetadata = JSON.parse(metadata);
-            let MMY = ""
-            for (let details of parsedMetadata.attributes){
-                MMY += (details.value + " ")
-            }
-            return MMY
+            return parsedMetadata.attributes.map(detail => detail.value).join(' ');
         } catch (error) {
             console.error("Error parsing metadata:", error);
             return null;
           }
     }
 
-    const singleNFTCarMMY = nftJson.map(singleCar => {
-        if (singleCar.name === "DIMO Vehicle ID"){
-            const carMMY = getCarMMY(singleCar.metadata)
-            return (
-                <option value={carMMY}>{carMMY}</option>
-            )
-        }
-    })
+    const handleCarChange = (e) => {
+        const index = parseInt(e.target.value);
+        setSelectedCar(index);
+        updateNftImage(nftJson[index].token_id);
+    }
 
     // Setup date and enforce future-only dates in the form below
+    // TODO: Format the end date so that it cannot be before the start date, and any other restrictions we want to add.
     const now = new Date();
-
     const formatDate = (date) => {
         return date.toISOString().slice(0, 16);
     };
-
     const minDate = formatDate(now);
 
     return(
@@ -67,8 +59,12 @@ export default function RentalForm({ address }){
                 </div>
                 <form className="rental-form">
                     <label>Choose Your Car</label>
-                    <select>
-                        {singleNFTCarMMY}
+                    <select onChange={handleCarChange} value={selectedCar}>
+                    {nftJson.map((car, index) => (
+                        <option key={car.token_id} value={index}>
+                            {getCarMMY(car.metadata)}
+                        </option>
+                    ))}
                     </select>
                     <br/>
                     <label>When Does the Trip Start?</label>
