@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { useWalletInfo } from '@web3modal/wagmi/react'
 import Header from './Header';
 import RentalForm from './RentalForm';
 import NFTJSON from './NFTJSON';
+import Driver from './Driver';
 
 export default function Home(){
     const { address, isConnected } = useAccount();
@@ -21,7 +22,7 @@ export default function Home(){
             }
             console.log(walletDetails);
         }
-    }, [isConnected, address, balance])
+    }, [isConnected, address, balance, walletInfo.name, walletInfo.icon])
 
     return(
         <>
@@ -29,6 +30,7 @@ export default function Home(){
                 <Header/>
                 <NFTJSON address={address}/>
                 <RentalForm/>
+                <Driver/>
             </div>
         </>
     )
