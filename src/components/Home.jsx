@@ -1,37 +1,37 @@
-import { useEffect } from 'react';
-import { useAccount, useBalance } from 'wagmi';
-import { useWalletInfo } from '@web3modal/wagmi/react'
-import Header from './Header';
-import RentalForm from './RentalForm';
-import NFTJSON from './NFTJSON';
-import Driver from './Driver';
+import { useEffect } from "react";
+import { useAccount, useBalance } from "wagmi";
+import { useWalletInfo } from "@web3modal/wagmi/react";
+import Header from "./Header";
+import RentalForm from "./RentalForm";
+import NFTJSON from "./NFTJSON";
+import ChooseHooman from "./ChooseHooman";
 
-export default function Home(){
-    const { address, isConnected } = useAccount();
-    const { data: balance } = useBalance({ address });
-    const { walletInfo } = useWalletInfo();    
+export default function Home() {
+  const { address, isConnected } = useAccount();
+  const { data: balance } = useBalance({ address });
+  const { walletInfo } = useWalletInfo();
 
-    useEffect(() => {
-        if(isConnected) {
-            const walletDetails = {
-                connectStatus: "connected",
-                address: address,
-                balance: balance,
-                walletInfoName: walletInfo.name,
-                walletInfoIcon: walletInfo.icon
-            }
-            console.log(walletDetails);
-        }
-    }, [isConnected, address, balance, walletInfo.name, walletInfo.icon])
+  useEffect(() => {
+    if (isConnected) {
+      const walletDetails = {
+        connectStatus: "connected",
+        address: address,
+        balance: balance,
+        walletInfoName: walletInfo.name,
+        walletInfoIcon: walletInfo.icon,
+      };
+      console.log(walletDetails);
+    }
+  }, [isConnected, address, balance, walletInfo.name, walletInfo.icon]);
 
-    return(
-        <>
-            <div>
-                <Header/>
-                <NFTJSON address={address}/>
-                <RentalForm/>
-                <Driver/>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <div>
+        <Header />
+        <NFTJSON address={address} />
+        <RentalForm />
+        <ChooseHooman />
+      </div>
+    </>
+  );
 }
