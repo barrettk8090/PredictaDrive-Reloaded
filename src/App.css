@@ -4,6 +4,43 @@
   /* padding: 2rem; */
 }
 
+@font-face {
+  font-family: Syncrone;
+  src: url(./Syncrone-Oblique.ttf);
+}
+
+@font-face{
+  font-family: Urbanist-Regular;
+  src: url(./Urbanist-Regular.ttf)
+}
+
+
+h1, h2{
+  font-family: Syncrone;
+  margin: 2rem;
+}
+
+p, input, select, label {
+  font-family: Urbanist-Regular;
+}
+
+p{
+  font-size:1.2rem;
+}
+
+.disconnected-hero{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.connected-main{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .header{
   margin: 0;
   display:flex;
@@ -11,20 +48,38 @@
   justify-content: space-between;
 }
 
-#rental-form{
+#rental-form-container{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 3px solid black;
+  border-radius: px;
+  margin:20px;
+  width:100%;
+}
+
+.rental-header{
+  text-align: center;
+}
+
+.rental-form{
+  text-align: center;
   display:flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin:20px;
+  padding-top:80px;
+  margin-right:180px;
 }
 
-input, label{
-  margin: 20px;
+input, label, select{
+  margin: 10px;
+  font-size:1.4rem;
 }
 
-.nft-image{
-  width:30%;
+
+.nft-img-container{
+  width:45%;
+}
+.nft-img{
+  width:100%;
+  border-radius: 1px;
 }
