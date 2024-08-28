@@ -4,6 +4,7 @@ import { useWalletInfo } from '@web3modal/wagmi/react'
 import Header from './Header';
 import RentalForm from './RentalForm';
 import ConnectButton from '../ConnectButton';
+import NftCompser from './NftComposer';
 import NFTJSON from './NFTJSON';
 
 export default function Home(){
@@ -38,6 +39,7 @@ export default function Home(){
                 {/* <NFTJSON address={address}/> */}
                 <RentalForm address={ address }/>
                 <ConnectButton/>
+                <NftCompser/>
             </div>
             }
         </div>

@@ -41,6 +41,8 @@ export default function RentalForm({ address }){
         updateNftImage(nftJson[index].token_id);
     }
 
+    console.log(selectedCar)
+
     // Setup date and enforce future-only dates in the form below
     // TODO: Format the end date so that it cannot be before the start date, and any other restrictions we want to add.
     const now = new Date();
