@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function RentalForm({ address }){
+export default function RentalForm({ address, handleFormSubmit }){
     const [nftJson, setNftJson] = useState([]);
     const [nftImage, setNftImage] = useState("");
     const [selectedCar, setSelectedCar] = useState(0);
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+    // 🔽 TODO: Replace with real address from Bobs Component
+    // const [driverAddress, setDriverAddress] = useState("");
+    
+    const driverAddress = "0xrn3d2dn2fndf298nfdjkewnf"
 
     // Retrieve a users NFTs based on their connected wallet address
     useEffect(() => {
@@ -49,6 +55,18 @@ export default function RentalForm({ address }){
     };
     const minDate = formatDate(now);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = {
+            address: address,
+            selectedCar: nftJson[selectedCar],
+            startDate,
+            endDate,
+            driverAddress
+        };
+        handleFormSubmit(formData);
+    }
+
     return(
         <div>
             <h2 className="rental-header">Enter Your Car Information</h2>
@@ -57,7 +75,7 @@ export default function RentalForm({ address }){
                 <div className="nft-img-container">
                     {nftImage && <img className="nft-img" src={nftImage}/>}
                 </div>
-                <form className="rental-form">
+                <form className="rental-form" onSubmit={handleSubmit}>
                     <label>Choose Your Car</label>
                     <select onChange={handleCarChange} value={selectedCar}>
                     {nftJson.map((car, index) => (
@@ -69,16 +87,22 @@ export default function RentalForm({ address }){
                     <br/>
                     <label>When Does the Trip Start?</label>
                     <input 
-                    type="datetime-local"
-                    min={minDate}
+                        type="datetime-local"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        min={minDate}
+                        required
                     />
                     <br/>
                     <label>When Does the Trip End?</label>
                     <input 
-                    type="datetime-local"
-                    min={minDate}
+                        type="datetime-local"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        min={minDate}
+                        required
                     />
-                    <button>Next</button>
+                    <button type="submit">Next</button>
                 </form>
             </div>
         </div>
