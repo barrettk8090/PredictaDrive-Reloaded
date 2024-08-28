@@ -3,7 +3,7 @@ import { useAccount, useBalance } from 'wagmi';
 import { useWalletInfo } from '@web3modal/wagmi/react'
 import Header from './Header';
 import RentalForm from './RentalForm';
-import ConnectButton from '../ConnectButton';
+import ConnectButton from './ConnectButton';
 import createNFTMetadata from "../utils/nftMeta"
 
 export default function Home(){
