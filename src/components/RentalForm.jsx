@@ -5,6 +5,12 @@ export default function RentalForm({ address }){
     const [nftJson, setNftJson] = useState([]);
     const [nftImage, setNftImage] = useState("");
     const [selectedCar, setSelectedCar] = useState(0);
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+    const [driverAddress, setDriverAddress] = useState("");
+    
+    // TODO: Replace with real address from Bobs Component
+    setDriverAddress("0x5478935werughdfskj3287y493")
 
     // Retrieve a users NFTs based on their connected wallet address
     useEffect(() => {
@@ -41,8 +47,6 @@ export default function RentalForm({ address }){
         updateNftImage(nftJson[index].token_id);
     }
 
-    console.log(selectedCar)
-
     // Setup date and enforce future-only dates in the form below
     // TODO: Format the end date so that it cannot be before the start date, and any other restrictions we want to add.
     const now = new Date();
@@ -71,16 +75,22 @@ export default function RentalForm({ address }){
                     <br/>
                     <label>When Does the Trip Start?</label>
                     <input 
-                    type="datetime-local"
-                    min={minDate}
+                        type="datetime-local"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        min={minDate}
+                        required
                     />
                     <br/>
                     <label>When Does the Trip End?</label>
                     <input 
-                    type="datetime-local"
-                    min={minDate}
+                        type="datetime-local"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        min={minDate}
+                        required
                     />
-                    <button>Next</button>
+                    <button type="submit">Next</button>
                 </form>
             </div>
         </div>
