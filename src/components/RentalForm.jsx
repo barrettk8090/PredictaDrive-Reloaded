@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function RentalForm({ address }){
+export default function RentalForm({ address, handleFormSubmit }){
     const [nftJson, setNftJson] = useState([]);
     const [nftImage, setNftImage] = useState("");
     const [selectedCar, setSelectedCar] = useState(0);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
-    const [driverAddress, setDriverAddress] = useState("");
+    // 🔽 TODO: Replace with real address from Bobs Component
+    // const [driverAddress, setDriverAddress] = useState("");
     
-    // TODO: Replace with real address from Bobs Component
-    setDriverAddress("0x5478935werughdfskj3287y493")
+    const driverAddress = "0xrn3d2dn2fndf298nfdjkewnf"
 
     // Retrieve a users NFTs based on their connected wallet address
     useEffect(() => {
@@ -55,6 +55,18 @@ export default function RentalForm({ address }){
     };
     const minDate = formatDate(now);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = {
+            address: address,
+            selectedCar: nftJson[selectedCar],
+            startDate,
+            endDate,
+            driverAddress
+        };
+        handleFormSubmit(formData);
+    }
+
     return(
         <div>
             <h2 className="rental-header">Enter Your Car Information</h2>
@@ -90,7 +102,7 @@ export default function RentalForm({ address }){
                         min={minDate}
                         required
                     />
-                    <button type="submit">Next</button>
+                    <button type="submit" onSubmit={handleSubmit}>Next</button>
                 </form>
             </div>
         </div>

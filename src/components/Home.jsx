@@ -4,13 +4,13 @@ import { useWalletInfo } from '@web3modal/wagmi/react'
 import Header from './Header';
 import RentalForm from './RentalForm';
 import ConnectButton from '../ConnectButton';
-import NftCompser from './NftComposer';
-import NFTJSON from './NFTJSON';
+import createNFTMetadata from "../utils/nftMeta"
 
 export default function Home(){
     const { address, isConnected } = useAccount();
     const { data: balance } = useBalance({ address });
     const { walletInfo } = useWalletInfo();  
+    const [nftData, setNftData] = useState(null);
 
     useEffect(() => {
         if(isConnected) {
@@ -23,6 +23,14 @@ export default function Home(){
             }
         }
     }, [isConnected, address, balance])
+
+    // Handle Rental Form Submission 
+    // TODO: Include logic for generating and minting NFT
+    const handleFormSubmit = async (formData) => {
+        const metadata = createNFTMetadata(formData);
+        setNftData(metadata);
+        console.log(nftData);
+    }
 
 
     return(
@@ -37,9 +45,8 @@ export default function Home(){
             ) : 
             <div className="connected-main">
                 {/* <NFTJSON address={address}/> */}
-                <RentalForm address={ address }/>
+                <RentalForm address={address} handleFormSubmit={handleFormSubmit}/>
                 <ConnectButton/>
-                <NftCompser/>
             </div>
             }
         </div>
