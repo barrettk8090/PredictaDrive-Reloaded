@@ -26,10 +26,10 @@ export default function Home(){
 
     // Handle Rental Form Submission 
     // TODO: Include logic for generating and minting NFT
-    const handleFormSubmit = async (formData) => {
+    const handleFormSubmit = (formData) => {
         const metadata = createNFTMetadata(formData);
         setNftData(metadata);
-        console.log(nftData);
+        console.log("NFT Metadata created:", metadata);
     }
 
 

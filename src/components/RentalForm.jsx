@@ -75,7 +75,7 @@ export default function RentalForm({ address, handleFormSubmit }){
                 <div className="nft-img-container">
                     {nftImage && <img className="nft-img" src={nftImage}/>}
                 </div>
-                <form className="rental-form">
+                <form className="rental-form" onSubmit={handleSubmit}>
                     <label>Choose Your Car</label>
                     <select onChange={handleCarChange} value={selectedCar}>
                     {nftJson.map((car, index) => (
@@ -102,7 +102,7 @@ export default function RentalForm({ address, handleFormSubmit }){
                         min={minDate}
                         required
                     />
-                    <button type="submit" onSubmit={handleSubmit}>Next</button>
+                    <button type="submit">Next</button>
                 </form>
             </div>
         </div>
