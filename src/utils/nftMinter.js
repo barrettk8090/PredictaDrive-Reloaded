@@ -38,6 +38,6 @@ export async function mintNFT(metadata) {
             };
         }
     } else {
-        console.log("Missing metamask or some other error.");
+    console.log("Missing metamask or some other error.");
     }
 }
