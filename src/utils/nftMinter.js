@@ -9,35 +9,43 @@ const NFT_ABI = [
 const NFT_CONTRACT_ADDRESS = "0xAc755578ed07193544E046037A1CA5Ff9098dCCc";
 
 export async function mintNFT(metadata) {
-    if (typeof window.ethereum !== 'undefined') {
+    if (typeof window.ethereum === 'undefined') {
+        console.log("Not detecting eth/metamask");
+        return { success: false, error: "Eth/Metamask not found"};
+    }
+
+    try {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, signer);
 
-        // FIX THIS
-        const tokenURI = `data:application/json;base64,${btoa(JSON.stringify(metadata))}`;
+        const metadataString = JSON.stringify(metadata);
+        const encodedMetadata = Buffer.from(metadataString).toString('base64');
+        const tokenURI = `data:application/json;base64,${encodedMetadata}`;
 
-        try {
-            const transaction = await contract.mintNFT(tokenURI);
-            const tx = await transaction.wait();
-            const event = tx.events[0];
-            const value = event.args[2];
-            const tokenId = value.toNumber();
+        const transaction = await contract.mintNFT(tokenURI);
+        const receipt = await transaction.wait();
+        const event = receipt.events.find(event => event.event === 'Transfer');
+        const tokenId = event.args.tokenId.toNumber();
 
-            return {
-                success: true,
-                tokenId: tokenId,
-                transactionHash: tx.transactionHash
-            };
-        } catch (error) {
-            console.error("Error with minting NFT: ", error);
-            return {
-                success: false,
-                error: error.message
-            };
-        }
-    } else {
-    console.log("Missing metamask or some other error.");
+        console.log("NFT minted successfully: ", {
+            tokenId: tokenId,
+            transactionHash: receipt.transactionHash,
+            tokenURI: tokenURI
+        });
+
+        return {
+            success: true,
+            tokenId: tokenId,
+            transactionHash: receipt.transactionHash,
+            tokenURI: tokenURI
+        };
+    } catch (error){
+        console.error("Error minting the NFT:", error);
+        return {
+            success: false,
+            error: error
+        };
     }
 }

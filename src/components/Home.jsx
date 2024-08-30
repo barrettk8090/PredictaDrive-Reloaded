@@ -5,12 +5,15 @@ import Header from './Header';
 import RentalForm from './RentalForm';
 import ConnectButton from './ConnectButton';
 import createNFTMetadata from "../utils/nftMeta"
+import { mintNFT } from '../utils/nftMinter';
+import nftTestImg from "../../public/nftTestImg.gif"
 
 export default function Home(){
     const { address, isConnected } = useAccount();
     const { data: balance } = useBalance({ address });
     const { walletInfo } = useWalletInfo();  
     const [nftData, setNftData] = useState(null);
+    const [mintingStatus, setMintingStatus] = useState(null);
 
     useEffect(() => {
         if(isConnected) {
@@ -26,10 +29,22 @@ export default function Home(){
 
     // Handle Rental Form Submission 
     // TODO: Include logic for generating and minting NFT
-    const handleFormSubmit = (formData) => {
+    const handleFormSubmit = async (formData) => {
         const metadata = createNFTMetadata(formData);
         setNftData(metadata);
-        console.log("NFT Metadata created:", metadata);
+        setMintingStatus("Preparing metadata..");
+        console.log("NFT Metadata created:", nftData);
+        metadata.image = nftTestImg
+        setMintingStatus("Minting NFT...");
+        const result = await mintNFT(metadata);
+        if (result.success) {
+            setMintingStatus("NFT minted successfully!");
+            console.log("New NFT Details: ", result);
+        } else {
+            setMintingStatus("Failed to mint NFT");
+            console.error("Mint error: ", result.error);
+        }
+        
     }
 
 
