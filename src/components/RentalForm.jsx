@@ -57,14 +57,15 @@ export default function RentalForm({ address, handleFormSubmit }){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const formData = {
+        const formSubmission = {
             address: address,
             selectedCar: nftJson[selectedCar],
             startDate,
             endDate,
             driverAddress
         };
-        handleFormSubmit(formData);
+        console.log(formSubmission)
+        handleFormSubmit(formSubmission);
     }
 
     return(
