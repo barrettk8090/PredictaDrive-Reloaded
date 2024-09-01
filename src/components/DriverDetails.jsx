@@ -1,10 +1,19 @@
-export default function DriverDetails(){
+import { useState } from 'react';
+import ContractPreview from './ContractPreview';
 
-    // const handleDriverData = (e) => {
-    //     e.PreventDefault();
-    //     formSubmission["driverName"]: driverName,
-    //     formSubmission["driverAddress"]: driverAddress
-    // }
+export default function DriverDetails({formSubmission, handleFormSubmit, getCarMMY}){
+    const [driverAddress, setDriverAddress] = useState("");
+    const [driverName, setDriverName] = useState("");
+    const [previewContract, setPreviewContract] = useState(false);
+
+
+    const handleDriverData = (e) => {
+        e.preventDefault();
+        formSubmission.driverName = driverName
+        formSubmission.driverAddress = driverAddress
+        setPreviewContract(true);
+        console.log("Updated Form Submission:", formSubmission)
+    }
 
     return(
         <>
@@ -16,15 +25,22 @@ export default function DriverDetails(){
             {/* <div className="nft-img-container">
                 {nftImage && <img className="nft-img" src={nftImage}/>}
             </div> */}
-            <form className="rental-form">
+            <form className="rental-form" onSubmit={handleDriverData}>
                 <label>Drivers Name</label>
-                <input>
-                </input>
+                <input
+                    value={driverName}
+                    onChange={(e) => setDriverName(e.target.value)}
+                    required/>
+                    
                 <label>Drivers 0x Address</label>
-                <input>
-                </input>
-                <button>Generate Rental Contract</button>
+                <input
+                    value={driverAddress}
+                    onChange={(e)=> setDriverAddress(e.target.value)}
+                    required />
+                <button type="submit">Preview Contract</button>
             </form>
+            {previewContract &&
+                <ContractPreview formSubmission={formSubmission} handleFormSubmit={handleFormSubmit} getCarMMY={getCarMMY}/>}
         </div>
         </>
     )

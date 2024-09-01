@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 import DriverDetails from "./DriverDetails"
 
@@ -8,10 +9,11 @@ export default function RentalForm({ address, handleFormSubmit }){
     const [selectedCar, setSelectedCar] = useState(0);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
+    const [formSubmission, setFormSubmission] = useState("")
     // 🔽 TODO: Replace with real address from Bobs Component
     // const [driverAddress, setDriverAddress] = useState("");
     
-    const driverAddress = "0xrn3d2dn2fndf298nfdjkewnf"
+    const navigate = useNavigate;
 
     // Retrieve a users NFTs based on their connected wallet address
     useEffect(() => {
@@ -58,15 +60,16 @@ export default function RentalForm({ address, handleFormSubmit }){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const formSubmission = {
+        const data = {
             address: address,
             selectedCar: nftJson[selectedCar],
             startDate,
             endDate,
-            driverAddress
         };
-        console.log(formSubmission)
-        handleFormSubmit(formSubmission);
+        // console.log(formSubmission)
+        setFormSubmission(data)
+        // TODO: useNavigate here to go to next "page"
+        // handleFormSubmit(formSubmission);
     }
 
     return(
@@ -107,7 +110,9 @@ export default function RentalForm({ address, handleFormSubmit }){
                     <button type="submit">Next</button>
                 </form>
             </div>
-                <DriverDetails/>
+            {formSubmission &&
+                <DriverDetails formSubmission={formSubmission} handleFormSubmit={handleFormSubmit} getCarMMY={getCarMMY}/>
+            }
         </div>
     )
 }

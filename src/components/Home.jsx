@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAccount, useBalance, useSwitchChain } from 'wagmi';
 import { useWalletInfo } from '@web3modal/wagmi/react'
-import Header from './Header';
 import RentalForm from './RentalForm';
 import ConnectButton from './ConnectButton';
 import createNFTMetadata from "../utils/nftMeta"
@@ -72,7 +71,6 @@ export default function Home(){
 
     return(
         <div>
-            <Header/>
             {!isConnected? (
                 <div className="disconnected-hero">
                     <h1>Lets Get Connected</h1>
