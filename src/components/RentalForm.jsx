@@ -13,7 +13,7 @@ export default function RentalForm({ address, handleFormSubmit }){
     // 🔽 TODO: Replace with real address from Bobs Component
     // const [driverAddress, setDriverAddress] = useState("");
     
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     // Retrieve a users NFTs based on their connected wallet address
     useEffect(() => {
