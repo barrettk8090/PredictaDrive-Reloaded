@@ -1,5 +1,11 @@
 export default function DriverDetails(){
 
+    // const handleDriverData = (e) => {
+    //     e.PreventDefault();
+    //     formSubmission["driverName"]: driverName,
+    //     formSubmission["driverAddress"]: driverAddress
+    // }
+
     return(
         <>
         <div>
@@ -17,6 +23,7 @@ export default function DriverDetails(){
                 <label>Drivers 0x Address</label>
                 <input>
                 </input>
+                <button>Generate Rental Contract</button>
             </form>
         </div>
         </>

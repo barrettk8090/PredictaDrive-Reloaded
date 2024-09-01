@@ -18,7 +18,7 @@ export default function createNFTMetadata(formData){
         name: "PredictaDrive Insurance",
         description: `Rental agreement for ${getCarMMY(formData.selectedCar.metadata)}`,
         // TODO: Generate an image 
-        image: "TBD – FIGURE OUT HOW WE'RE DOING IMAGES",
+        image: formData.image,
         attributes: [
             { trait_type: "Owner Address", value: formData.address },
             { trait_type: "Vehicle Name", value: getCarMMY(formData.selectedCar.metadata) },

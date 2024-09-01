@@ -49,11 +49,11 @@ export default function Home(){
 
     const generateNFT = async (data) => {
         console.log("Generating NFT with data:", data);
+        data.image = nftTestImg;
         const metadata = createNFTMetadata(data);
         setNftData(metadata);
         setMintingStatus("Preparing metadata..");
         console.log("NFT Metadata created:", metadata);
-        metadata.image = nftTestImg;
         setMintingStatus("Minting NFT...");
         try {
             const result = await mintNFT(metadata);

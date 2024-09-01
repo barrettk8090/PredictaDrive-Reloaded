@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import DriverDetails from "./DriverDetails"
 
 export default function RentalForm({ address, handleFormSubmit }){
     const [nftJson, setNftJson] = useState([]);
@@ -106,6 +107,7 @@ export default function RentalForm({ address, handleFormSubmit }){
                     <button type="submit">Next</button>
                 </form>
             </div>
+                <DriverDetails/>
         </div>
     )
 }
