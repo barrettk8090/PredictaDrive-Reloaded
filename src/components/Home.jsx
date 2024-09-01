@@ -30,40 +30,43 @@ export default function Home(){
     }, [isConnected, address, balance])
 
     // Handle Rental Form Submission & Mint NFT
-    const handleFormSubmit = async (formSubmission) => {
-        console.log("Form submission data after submit: ", formSubmission)
-        setFormData(formSubmission);
-        console.log(formData)
+    const handleFormSubmit = async (data) => {
+        console.log("Form submission data:", data);
+        setFormData(data);
         setMintingStatus("Initiating switch to Sepolia");
-        console.log(mintingStatus);
 
-        // Sepolia ChainID = 11155111
-        if (chain.id !== 11155111) {
-            await switchChain(11155111);
+        try {
+            // Sepolia ChainID = 11155111
+            if (chain.id !== 11155111) {
+                await switchChain(11155111);
+            }
+            await generateNFT(data);
+        } catch (error) {
+            console.error("Error during network switch or NFT generation:", error);
+            setMintingStatus("Error: " + error.message);
         }
-
-        await generateNFT(formData);
     }
 
-    const generateNFT = async (formData) => {
-        console.log("THIS IS THE FORMDATA:", formData)
-        const metadata = createNFTMetadata(formData);
+    const generateNFT = async (data) => {
+        console.log("Generating NFT with data:", data);
+        const metadata = createNFTMetadata(data);
         setNftData(metadata);
         setMintingStatus("Preparing metadata..");
-        console.log("NFT Metadata created:", nftData);
-        console.log(mintingStatus)
-        metadata.image = nftTestImg
+        console.log("NFT Metadata created:", metadata);
+        metadata.image = nftTestImg;
         setMintingStatus("Minting NFT...");
-        console.log(mintingStatus)
-        const result = await mintNFT(metadata);
-        if (result.success) {
-            setMintingStatus("NFT minted successfully!");
-            console.log(mintingStatus)
-            console.log("New NFT Details: ", result);
-        } else {
-            setMintingStatus("Failed to mint NFT");
-            console.log(mintingStatus)
-            console.error("Mint error: ", result.error);
+        try {
+            const result = await mintNFT(metadata);
+            if (result.success) {
+                setMintingStatus("NFT minted successfully!");
+                console.log("New NFT Details: ", result);
+            } else {
+                setMintingStatus("Failed to mint NFT");
+                console.error("Mint error: ", result.error);
+            }
+        } catch (error) {
+            console.error("Error in mintNFT:", error);
+            setMintingStatus("Error minting NFT: " + error.message);
         }
     }
 
