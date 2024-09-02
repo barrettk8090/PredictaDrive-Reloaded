@@ -5,7 +5,7 @@ import RentalForm from './RentalForm';
 import ConnectButton from './ConnectButton';
 import createNFTMetadata from "../utils/nftMeta"
 import { mintNFT } from '../utils/nftMinter';
-import nftTestImg from "../assets/nftTestImg"
+import nftTestImg from "../assets/nftTestImg.gif"
 
 export default function Home(){
     const { address, isConnected, chain } = useAccount();
