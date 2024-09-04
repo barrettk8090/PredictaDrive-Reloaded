@@ -14,11 +14,13 @@ export default function createNFTMetadata(formData){
         }
     }
 
+    const imageUrl = "https://i.imgur.com/Nkuu1f2.gif"
+
     return {
         name: "PredictaDrive Insurance",
         description: `Rental agreement for ${getCarMMY(formData.selectedCar.metadata)}`,
         // TODO: Generate an image 
-        image: formData.image,
+        image: imageUrl,
         attributes: [
             { trait_type: "Owner Address", value: formData.address },
             { trait_type: "Vehicle Name", value: getCarMMY(formData.selectedCar.metadata) },

@@ -5,8 +5,8 @@ const NFT_ABI = [
     "function tokenURI(uint256 tokenId) public view returns (string memory)"
   ];
 
-//   NEED TO TEST - This is on Sepolia
-const NFT_CONTRACT_ADDRESS = "0xAc755578ed07193544E046037A1CA5Ff9098dCCc";
+  // Sepolia contract for testing 
+  const NFT_CONTRACT_ADDRESS = "0xAc755578ed07193544E046037A1CA5Ff9098dCCc";
 
 export async function mintNFT(metadata) {
     if (typeof window.ethereum === 'undefined') {

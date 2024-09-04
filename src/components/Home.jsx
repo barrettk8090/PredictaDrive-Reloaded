@@ -5,7 +5,7 @@ import RentalForm from './RentalForm';
 import ConnectButton from './ConnectButton';
 import createNFTMetadata from "../utils/nftMeta"
 import { mintNFT } from '../utils/nftMinter';
-import nftTestImg from "../assets/nftTestImg.gif"
+// import nftTestImg from "../assets/nftTestImg.gif"
 
 export default function Home(){
     const { address, isConnected, chain } = useAccount();
@@ -48,7 +48,6 @@ export default function Home(){
 
     const generateNFT = async (data) => {
         console.log("Generating NFT with data:", data);
-        data.image = nftTestImg;
         const metadata = createNFTMetadata(data);
         setNftData(metadata);
         setMintingStatus("Preparing metadata..");
