@@ -18,7 +18,7 @@ export default function RentalForm({ address, handleFormSubmit }){
     // Retrieve a users NFTs based on their connected wallet address
     useEffect(() => {
         if (address) {
-            axios(`http://localhost:4000/nft/${address}`)
+            axios(`http://localhost:4000/nft-polygon/${address}`)
             .then(({ data }) => {
                 const dimoVehicles = data.result.filter(nft => nft.name === "DIMO Vehicle ID");
                 setNftJson(dimoVehicles);
@@ -66,10 +66,8 @@ export default function RentalForm({ address, handleFormSubmit }){
             startDate,
             endDate,
         };
-        // console.log(formSubmission)
         setFormSubmission(data)
-        // TODO: useNavigate here to go to next "page"
-        // handleFormSubmit(formSubmission);
+        // navigate("/driver-details")
     }
 
     return(
