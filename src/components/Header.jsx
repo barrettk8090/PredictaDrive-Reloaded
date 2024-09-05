@@ -1,10 +1,11 @@
-import ConnectButton from "./ConnectButton"
+import logo from "../assets/Logo.png"
 
 export default function Header(){
 
     return(
         <div className="header">
-            <h1>PredictaDrive</h1>
+            <img className="logo" src={logo}/>
+            {/* <h1>PredictaDrive</h1> */}
             <h2>Using DIMO</h2>
         </div>
     )

@@ -1,3 +1,7 @@
+body{
+  background-color: black;
+}
+
 #root {
   max-width: 1280px;
   margin: 0;
@@ -14,6 +18,10 @@
   src: url(./Urbanist-Regular.ttf)
 }
 
+h1, h2, h3, h4, h5, h6, p, label, li {
+  color:white;
+}
+
 
 h1, h2{
   font-family: Syncrone;
@@ -26,6 +34,11 @@ p, input, select, label {
 
 p{
   font-size:1.2rem;
+}
+
+.logo{
+  max-width: 400px;
+  margin: 2rem;
 }
 
 .disconnected-hero{
@@ -52,7 +65,7 @@ p{
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 3px solid black;
+  border: 3px solid white;
   border-radius: px;
   margin:20px;
   width:100%;
