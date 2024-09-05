@@ -41,12 +41,17 @@ p{
   margin: 2rem;
 }
 
+.home-hero{
+  max-width: 700px;
+}
+
 .disconnected-hero{
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 
 .connected-main{
   display:flex;

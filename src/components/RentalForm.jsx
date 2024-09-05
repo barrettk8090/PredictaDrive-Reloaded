@@ -109,7 +109,7 @@ export default function RentalForm({ address, handleFormSubmit }){
                 </form>
             </div>
             {formSubmission &&
-                <DriverDetails formSubmission={formSubmission} handleFormSubmit={handleFormSubmit} getCarMMY={getCarMMY}/>
+                <DriverDetails formSubmission={formSubmission} handleFormSubmit={handleFormSubmit} getCarMMY={getCarMMY} nftImage={nftImage}/>
             }
         </div>
     )

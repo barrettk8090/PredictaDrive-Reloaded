@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import ContractPreview from './ContractPreview';
 
-export default function DriverDetails({formSubmission, handleFormSubmit, getCarMMY}){
+export default function DriverDetails({formSubmission, handleFormSubmit, getCarMMY, nftImage}){
     const [driverAddress, setDriverAddress] = useState("");
     const [driverName, setDriverName] = useState("");
     const [previewContract, setPreviewContract] = useState(false);
+    const navigate = useNavigate();
 
 
     const handleDriverData = (e) => {
@@ -13,6 +15,7 @@ export default function DriverDetails({formSubmission, handleFormSubmit, getCarM
         formSubmission.driverAddress = driverAddress
         setPreviewContract(true);
         console.log("Updated Form Submission:", formSubmission)
+        navigate("/contract-preview");
     }
 
     return(
@@ -22,9 +25,9 @@ export default function DriverDetails({formSubmission, handleFormSubmit, getCarM
             <p>Please enter the details for the driver of your vehicle</p>
         </div>
         <div>
-            {/* <div className="nft-img-container">
-                {nftImage && <img className="nft-img" src={nftImage}/>}
-            </div> */}
+            <div className="nft-img-container">
+                {nftImage && <img className="nft-image" src={nftImage}/>}
+            </div>
             <form className="rental-form" onSubmit={handleDriverData}>
                 <label>Drivers Name</label>
                 <input

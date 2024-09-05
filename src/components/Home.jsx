@@ -5,6 +5,7 @@ import RentalForm from './RentalForm';
 import ConnectButton from './ConnectButton';
 import createNFTMetadata from "../utils/nftMeta"
 import { mintNFT } from '../utils/nftMinter';
+import homeImg from "../assets/homeImg.jpg"
 // import nftTestImg from "../assets/nftTestImg.gif"
 
 export default function Home(){
@@ -73,6 +74,7 @@ export default function Home(){
             {!isConnected? (
                 <div className="disconnected-hero">
                     <h1>Rental Car Insurance for PredictaDrive Hosts</h1>
+                    <img className="home-hero" src={homeImg}/>
                     <ol>
                         <li>Connect Your DIMO Wallet</li>
                         <li>Set dates for when your vehicle is being rented</li>
