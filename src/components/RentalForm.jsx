@@ -71,7 +71,7 @@ export default function RentalForm({ address, handleFormSubmit }){
     }
 
     return(
-        <div>
+        <div className="rental-container">
             <h2 className="rental-header">Enter Your Car Information</h2>
             <p className="rental-header">Below, choose the DIMO vehicle that will be rented, along with the aniticpated start and end dates for the trip. You'll enter driver details next.</p>
             <div id="rental-form-container">

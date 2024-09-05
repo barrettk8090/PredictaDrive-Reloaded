@@ -1,11 +1,14 @@
 body{
   background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1920px;
+  
 }
 
 #root {
-  max-width: 1280px;
   margin: 0;
-  /* padding: 2rem; */
 }
 
 @font-face {
@@ -20,20 +23,20 @@ body{
 
 h1, h2, h3, h4, h5, h6, p, label, li {
   color:white;
+  font-family: Inter;
 }
 
 
 h1, h2{
-  font-family: Syncrone;
   margin: 2rem;
-}
-
-p, input, select, label {
-  font-family: Urbanist-Regular;
 }
 
 p{
   font-size:1.2rem;
+}
+
+ul{
+  list-style:none;
 }
 
 .logo{
@@ -52,6 +55,45 @@ p{
   align-items: center;
 }
 
+.how-it-works{
+  background-color: #A42D80;
+  width: 100%;
+  margin: 2rem;
+}
+
+.how-it-works > h2{
+  text-align: center;
+}
+
+.how-it-works > ul {
+  text-align: left;
+}
+
+li {
+  padding:20px;
+  font-size: 20px;
+}
+
+.nums{
+  border: 1px solid black;
+  border-radius: 8px;
+  text-align: center;
+  background-color: white;
+  color:black;
+  padding:10px;
+  margin: 20px;
+}
+
+.get-connected{
+  margin-bottom: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.get-connected, p {
+  padding:40px;
+}
 
 .connected-main{
   display:flex;
@@ -64,6 +106,10 @@ p{
   display:flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.rental-container{
+  max-width: 70%;
 }
 
 #rental-form-container{
@@ -93,11 +139,16 @@ input, label, select{
   font-size:1.4rem;
 }
 
-
 .nft-img-container{
   width:45%;
 }
 .nft-img{
   width:100%;
   border-radius: 1px;
+}
+
+.driver-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
