@@ -72,7 +72,13 @@ export default function Home(){
         <div>
             {!isConnected? (
                 <div className="disconnected-hero">
-                    <h1>Lets Get Connected</h1>
+                    <h1>Rental Car Insurance for PredictaDrive Hosts</h1>
+                    <ol>
+                        <li>Connect Your DIMO Wallet</li>
+                        <li>Set dates for when your vehicle is being rented</li>
+                        <li>Provide information about the driver of your vehicle</li>
+                        <li>Generate an NFT for betting markets</li>
+                    </ol>
                     <p>In order to begin, please connect your wallet that's linked to your DIMO account. </p>
                     <ConnectButton/>
                 </div>
