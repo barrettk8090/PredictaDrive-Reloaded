@@ -20,7 +20,7 @@ export default function DriverDetails({formSubmission, handleFormSubmit, getCarM
 
     return(
         <div className="driver-container">
-            <div>
+            <div className="rental-header">
                 <h2>Driver Information</h2>
                 <p>Please enter the details for the driver of your vehicle</p>
             </div>

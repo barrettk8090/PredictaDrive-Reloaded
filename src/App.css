@@ -148,6 +148,16 @@ input, label, select{
 }
 
 .driver-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 3px solid white;
+  border-radius: px;
+  margin:20px;
+  width:100%;
+}
+
+.driver-form{
   display: flex;
   flex-direction: column;
   align-items: center;
