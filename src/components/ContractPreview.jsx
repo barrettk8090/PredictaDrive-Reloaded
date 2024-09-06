@@ -1,4 +1,12 @@
+import { useState } from 'react';
+
 export default function ContractPreview({formSubmission, handleFormSubmit, getCarMMY}){
+    const [buttonText, setButtonText] = useState("Generate NFT");
+
+    function handleButton(formSubmission) {
+        setButtonText("Minting NFT, please wait..")
+        handleFormSubmit(formSubmission);
+    }
 
     return(
         <div className="contract-container">
@@ -10,7 +18,7 @@ export default function ContractPreview({formSubmission, handleFormSubmit, getCa
                 <p>Rental End Date: {formSubmission.endDate}</p>
                 <p>Renters Name: {formSubmission.driverName}</p>
                 <p>Drivers 0x Address: {formSubmission.driverAddress}</p>
-                <button onClick={() => handleFormSubmit(formSubmission)}>Generate NFT</button>
+                <button onClick={() => handleButton(formSubmission)}>{buttonText}</button>
             </div>
         </div>
     )

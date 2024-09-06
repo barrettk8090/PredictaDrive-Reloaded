@@ -61,7 +61,7 @@ export default function Home(){
             if (result.success) {
                 setMintingStatus("NFT minted successfully!");
                 console.log("New NFT Details: ", result);
-                navigate(`/nft/${result.tokenId}`);
+                navigate(`/minted-contract/${result.tokenId}`);
             } else {
                 setMintingStatus("Failed to mint NFT: " + result.error);
                 console.error("Mint error: ", result.error);

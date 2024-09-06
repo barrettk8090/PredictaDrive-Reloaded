@@ -38,6 +38,7 @@ export default function NFTDetails() {
           const response = await fetch(tokenURI);
           const data = await response.json();
           setNftData(data);
+          console.log(nftData)
         }
 
         setLoading(false);
