@@ -6,7 +6,7 @@ export default function Header(){
         <div className="header">
             <img className="logo" src={logo}/>
             {/* <h1>PredictaDrive</h1> */}
-            <h2>Using DIMO</h2>
+            {/* <h2>Using DIMO</h2> */}
         </div>
     )
 }

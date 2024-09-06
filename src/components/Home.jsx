@@ -78,10 +78,10 @@ export default function Home(){
                     <div className="how-it-works">
                         <h2>How It Works</h2>
                         <ul>
-                            <li><span className="nums">1.</span> Connect Your DIMO Wallet</li>
-                            <li><span className="nums">2.</span> Set dates for when your vehicle is being rented</li>
-                            <li><span className="nums">3.</span> Provide information about the driver of your vehicle</li>
-                            <li><span className="nums">4.</span> Generate an NFT for betting markets</li>
+                            <li><span className="nums">1.</span> Connect Your DIMO Wallet.</li>
+                            <li><span className="nums">2.</span> Pick a host car, and set rental trip dates.</li>
+                            <li><span className="nums">3.</span> Provide information about the driver of your vehicle.</li>
+                            <li><span className="nums">4.</span> Generate an NFT the can be used betting markets, like Augur.</li>
                         </ul>
                     </div>
                     <div className="get-connected">

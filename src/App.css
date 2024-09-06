@@ -37,6 +37,7 @@ p{
 
 ul{
   list-style:none;
+  padding-bottom: 2rem;
 }
 
 .logo{
@@ -59,6 +60,7 @@ ul{
   background-color: #A42D80;
   width: 100%;
   margin: 2rem;
+  border-radius: 5px;
 }
 
 .how-it-works > h2{
@@ -75,13 +77,11 @@ li {
 }
 
 .nums{
-  border: 1px solid black;
-  border-radius: 8px;
   text-align: center;
-  background-color: white;
-  color:black;
+  color:white;
   padding:10px;
   margin: 20px;
+  font-size: 2rem;
 }
 
 .get-connected{
