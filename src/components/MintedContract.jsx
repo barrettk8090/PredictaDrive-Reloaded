@@ -6,7 +6,7 @@ const NFT_ABI = [
   "function tokenURI(uint256 tokenId) public view returns (string memory)"
 ];
 
-const NFT_CONTRACT_ADDRESS = "0xAc755578ed07193544E046037A1CA5Ff9098dCCc";
+const NFT_CONTRACT_ADDRESS = "0xc1305b50cD2d52EB1d8d6D089aF0957E843F4884";
 
 export default function NFTDetails() {
   const [nftData, setNftData] = useState(null);
