@@ -56,11 +56,13 @@ export default function NFTDetails() {
   if (!nftData) return <div>No NFT data found</div>;
 
   return (
-    <div className="nft-details">
-      <h2>{nftData.name}</h2>
+    <div className="final-contract-container">
+      <h2>Your Insurance Contract:</h2>
+      <p>You've successfully generated an insurance contract! </p>
+      <p>See below for the contract details, along with next steps on how to use your insurance.</p>
       <img src={nftData.image} alt={nftData.name} className="nft-image" />
-      <p>{nftData.description}</p>
-      <h3>Attributes:</h3>
+      <p>Your {nftData.description}</p>
+      <h3>Contract Details:</h3>
       <ul>
         {nftData.attributes.map((attr, index) => (
           <li key={index}>
@@ -81,6 +83,18 @@ export default function NFTDetails() {
       <p>
         <strong>Token ID:</strong> {tokenId}
       </p>
+      <div className="whats-next">
+        <h2>What's Next?</h2>
+            <ul>
+                <li><span className="nums">1.</span> Launch your preferred prediction network.</li>
+                <li><span className="nums">2.</span> Connect to the network and list your NFT.</li>
+                <li><span className="nums">3.</span> Post your bait.</li>
+                <li><span className="nums">4.</span> Allow others to bet against you.</li>
+            </ul>
+      </div>
+      <a href="https://www.alchemy.com/best/web3-prediction-markets" target="_blank">
+        <button>Check Out Networks →</button>
+      </a>
     </div>
   );
 }

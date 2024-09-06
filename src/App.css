@@ -56,7 +56,7 @@ ul{
   align-items: center;
 }
 
-.how-it-works{
+.how-it-works, .whats-next{
   background-color: #A42D80;
   width: 100%;
   margin: 2rem;
@@ -173,4 +173,10 @@ input, label, select{
 
 .contract-details > p {
   padding:0;
+}
+
+.final-contract-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
