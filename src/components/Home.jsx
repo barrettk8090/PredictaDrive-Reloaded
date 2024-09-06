@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAccount, useBalance, useSwitchChain } from 'wagmi';
 import { useWalletInfo } from '@web3modal/wagmi/react'
+import { useNavigate } from 'react-router';
 import RentalForm from './RentalForm';
 import ConnectButton from './ConnectButton';
 import createNFTMetadata from "../utils/nftMeta"
@@ -16,6 +17,7 @@ export default function Home(){
     const [nftData, setNftData] = useState(null);
     const [mintingStatus, setMintingStatus] = useState(null);
     const [formData, setFormData] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(isConnected) {
@@ -59,8 +61,9 @@ export default function Home(){
             if (result.success) {
                 setMintingStatus("NFT minted successfully!");
                 console.log("New NFT Details: ", result);
+                navigate(`/nft/${result.tokenId}`);
             } else {
-                setMintingStatus("Failed to mint NFT");
+                setMintingStatus("Failed to mint NFT: " + result.error);
                 console.error("Mint error: ", result.error);
             }
         } catch (error) {
