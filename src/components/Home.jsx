@@ -6,8 +6,7 @@ import RentalForm from './RentalForm';
 import ConnectButton from './ConnectButton';
 import createNFTMetadata from "../utils/nftMeta"
 import { mintNFT } from '../utils/nftMinter';
-import homeImg from "../assets/homeImg.jpg"
-// import nftTestImg from "../assets/nftTestImg.gif"
+import homeImg from "../assets/homeImg.jpg";
 
 export default function Home(){
     const { address, isConnected, chain } = useAccount();
@@ -19,21 +18,8 @@ export default function Home(){
     const [formData, setFormData] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if(isConnected) {
-            const walletDetails = {
-                connectStatus: "connected",
-                address: address,
-                balance: balance,
-                walletInfoName: walletInfo.name,
-                walletInfoIcon: walletInfo.icon
-            }
-        }
-    }, [isConnected, address, balance])
-
     // Handle Rental Form Submission & Mint NFT
     const handleFormSubmit = async (data) => {
-        console.log("Form submission data:", data);
         setFormData(data);
         setMintingStatus("Initiating switch to Sepolia");
 
@@ -50,17 +36,14 @@ export default function Home(){
     }
 
     const generateNFT = async (data) => {
-        console.log("Generating NFT with data:", data);
         const metadata = createNFTMetadata(data);
         setNftData(metadata);
         setMintingStatus("Preparing metadata..");
-        console.log("NFT Metadata created:", metadata);
         setMintingStatus("Minting NFT...");
         try {
             const result = await mintNFT(metadata);
             if (result.success) {
                 setMintingStatus("NFT minted successfully!");
-                console.log("New NFT Details: ", result);
                 navigate(`/minted-contract/${result.tokenId}`);
             } else {
                 setMintingStatus("Failed to mint NFT: " + result.error);
@@ -94,7 +77,6 @@ export default function Home(){
                 </div>
             ) : 
             <div className="connected-main">
-                {/* <NFTJSON address={address}/> */}
                 <RentalForm address={address} handleFormSubmit={handleFormSubmit}/>
                 <ConnectButton/>
             </div>

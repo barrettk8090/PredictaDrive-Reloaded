@@ -1,8 +1,5 @@
 
 export default function createNFTMetadata(formData){
-    // address = users address, driversAddress = renters address
-    // const { selectedCar, driverAddress} = formData;
-    console.log("Form Data as its passed into CreateNFTMeta: ",formData)
     
     function getCarMMY(metadata) {
         try {
