@@ -183,3 +183,8 @@ input, label, select{
   flex-direction: column;
   align-items: center;
 }
+
+.final-contract-container > p {
+  padding:4px;
+  margin:.5rem;
+}

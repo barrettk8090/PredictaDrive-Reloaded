@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
 import axios from 'axios';
 import DriverDetails from "./DriverDetails"
 
@@ -10,10 +9,7 @@ export default function RentalForm({ address, handleFormSubmit }){
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [formSubmission, setFormSubmission] = useState("")
-    // 🔽 TODO: Replace with real address from Bobs Component
-    // const [driverAddress, setDriverAddress] = useState("");
     
-    const navigate = useNavigate();
 
     // Retrieve a users NFTs based on their connected wallet address
     useEffect(() => {
@@ -67,7 +63,6 @@ export default function RentalForm({ address, handleFormSubmit }){
             endDate,
         };
         setFormSubmission(data)
-        // navigate("/driver-details")
     }
 
     return(

@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
 import ContractPreview from './ContractPreview';
 import { ethers } from 'ethers';
 
-export default function DriverDetails({formSubmission, handleFormSubmit, getCarMMY, nftImage}){
+export default function DriverDetails({formSubmission, handleFormSubmit, getCarMMY}){
     const [driverAddress, setDriverAddress] = useState("");
     const [driverName, setDriverName] = useState("");
     const [isResolvingENS, setIsResolvingENS] = useState(false);
     const [previewContract, setPreviewContract] = useState(false);
-    const navigate = useNavigate();
 
 
     const handleDriverData = (e) => {
@@ -17,7 +15,6 @@ export default function DriverDetails({formSubmission, handleFormSubmit, getCarM
         formSubmission.driverAddress = driverAddress
         setPreviewContract(true);
         console.log("Updated Form Submission:", formSubmission)
-        // navigate("/contract-preview");
     }
 
     const resolveENS = async (ensName) => {
@@ -54,9 +51,6 @@ export default function DriverDetails({formSubmission, handleFormSubmit, getCarM
                 <p>Please enter the details for the driver of your vehicle</p>
             </div>
             <div>
-                {/* <div className="nft-img-container">
-                    {nftImage && <img className="nft-image" src={nftImage}/>}
-                </div> */}
                 <form className="driver-form" onSubmit={handleDriverData}>
                     <label>Drivers Name</label>
                     <input

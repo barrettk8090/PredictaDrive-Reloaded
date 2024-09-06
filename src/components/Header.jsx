@@ -7,8 +7,6 @@ export default function Header(){
             <a href="/">
                 <img className="logo" src={logo}/>
             </a>
-            {/* <h1>PredictaDrive</h1> */}
-            {/* <h2>Using DIMO</h2> */}
         </div>
     )
 }
