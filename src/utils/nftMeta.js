@@ -26,6 +26,7 @@ export default function createNFTMetadata(formData){
             { trait_type: "Vehicle Name", value: getCarMMY(formData.selectedCar.metadata) },
             { trait_type: "Start Date", value: formData.startDate },
             { trait_type: "End Date", value: formData.endDate },
+            { trait_type: "Drivers Name", value: formData.driverName},
             { trait_type: "Drivers Address", value: formData.driverAddress },
             { trait_type: "Vehicle Token ID", value: formData.selectedCar.token_id }
         ]
