@@ -15,10 +15,11 @@ export default function DriverDetails({formSubmission, handleFormSubmit, getCarM
         formSubmission.driverAddress = driverAddress
         setPreviewContract(true);
         console.log("Updated Form Submission:", formSubmission)
-        navigate("/contract-preview");
+        // navigate("/contract-preview");
     }
 
     return(
+        <>
         <div className="driver-container">
             <div className="rental-header">
                 <h2>Driver Information</h2>
@@ -42,9 +43,10 @@ export default function DriverDetails({formSubmission, handleFormSubmit, getCarM
                         required />
                     <button type="submit">Preview Contract</button>
                 </form>
-                {previewContract &&
-                    <ContractPreview formSubmission={formSubmission} handleFormSubmit={handleFormSubmit} getCarMMY={getCarMMY}/>}
             </div>
         </div>
+            {previewContract &&
+                <ContractPreview formSubmission={formSubmission} handleFormSubmit={handleFormSubmit} getCarMMY={getCarMMY}/>}
+    </>
     )
 }
