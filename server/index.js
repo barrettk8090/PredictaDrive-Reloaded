@@ -21,10 +21,29 @@ app.use(
   const MORALIS_API_KEY = process.env.MORALIS_API_KEY;
   
   // New endpoint to get NFT contract details
-  app.get("/nft/:address", async (req, res) => {
+  app.get("/nft-polygon/:address", async (req, res) => {
     try {
       const { address } = req.params;
       const chain = "0x89"; // Polygon chain
+  
+      const response = await Moralis.EvmApi.nft.getWalletNFTs({
+        chain,
+        format: "decimal",
+        mediaItems: false,
+        address
+      });
+  
+      res.json(response.raw);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "An error occurred while fetching NFT data" });
+    }
+  });
+
+  app.get("/nft-sepolia/:address", async (req, res) => {
+    try {
+      const { address } = req.params;
+      const chain = "0xaa36a7"; // Sepolia chain
   
       const response = await Moralis.EvmApi.nft.getWalletNFTs({
         chain,

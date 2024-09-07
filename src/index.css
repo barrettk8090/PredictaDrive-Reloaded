@@ -36,9 +36,12 @@ h2{
 }
 
 button {
+  color: white;
+  background-color: #A42D80;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
+  margin: 2rem;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;

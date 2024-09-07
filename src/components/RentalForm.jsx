@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
 import axios from 'axios';
 import DriverDetails from "./DriverDetails"
 
@@ -10,15 +9,12 @@ export default function RentalForm({ address, handleFormSubmit }){
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [formSubmission, setFormSubmission] = useState("")
-    // 🔽 TODO: Replace with real address from Bobs Component
-    // const [driverAddress, setDriverAddress] = useState("");
     
-    const navigate = useNavigate();
 
     // Retrieve a users NFTs based on their connected wallet address
     useEffect(() => {
         if (address) {
-            axios(`http://localhost:4000/nft/${address}`)
+            axios(`http://localhost:4000/nft-polygon/${address}`)
             .then(({ data }) => {
                 const dimoVehicles = data.result.filter(nft => nft.name === "DIMO Vehicle ID");
                 setNftJson(dimoVehicles);
@@ -66,16 +62,15 @@ export default function RentalForm({ address, handleFormSubmit }){
             startDate,
             endDate,
         };
-        // console.log(formSubmission)
         setFormSubmission(data)
-        // TODO: useNavigate here to go to next "page"
-        // handleFormSubmit(formSubmission);
     }
 
     return(
-        <div>
-            <h2 className="rental-header">Enter Your Car Information</h2>
-            <p className="rental-header">Below, choose the DIMO vehicle that will be rented, along with the aniticpated start and end dates for the trip. You'll enter driver details next.</p>
+        <div className="rental-container">
+            <div className="rental-header">
+                <h2>Set Up The Host Car</h2>
+                <p>Select the DIMO Car that you're planning on hosting / renting out. Set the start date and end date for the duration of the rental period. You'll submit details about the driver of the car in the next section.</p>
+            </div>
             <div id="rental-form-container">
                 <div className="nft-img-container">
                     {nftImage && <img className="nft-img" src={nftImage}/>}
@@ -111,7 +106,7 @@ export default function RentalForm({ address, handleFormSubmit }){
                 </form>
             </div>
             {formSubmission &&
-                <DriverDetails formSubmission={formSubmission} handleFormSubmit={handleFormSubmit} getCarMMY={getCarMMY}/>
+                <DriverDetails formSubmission={formSubmission} handleFormSubmit={handleFormSubmit} getCarMMY={getCarMMY} nftImage={nftImage}/>
             }
         </div>
     )

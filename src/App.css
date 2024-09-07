@@ -1,7 +1,14 @@
+body{
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1920px;
+  
+}
+
 #root {
-  max-width: 1280px;
   margin: 0;
-  /* padding: 2rem; */
 }
 
 @font-face {
@@ -14,18 +21,35 @@
   src: url(./Urbanist-Regular.ttf)
 }
 
-
-h1, h2{
-  font-family: Syncrone;
-  margin: 2rem;
+h1, h2, h3, h4, h5, h6, p, label, li {
+  color:white;
+  font-family: Inter;
 }
 
-p, input, select, label {
-  font-family: Urbanist-Regular;
+
+h1, h2{
+  margin: 2rem;
 }
 
 p{
   font-size:1.2rem;
+}
+
+ul{
+  list-style:none;
+  padding-bottom: 2rem;
+}
+
+.logo{
+  max-width: 400px;
+  margin: 2rem;
+}
+
+.home-hero{
+  width: 100%;
+  border-radius: 8px;
+  height:400px;
+  object-fit: cover;
 }
 
 .disconnected-hero{
@@ -33,6 +57,45 @@ p{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.how-it-works, .whats-next{
+  background-color: #A42D80;
+  width: 100%;
+  margin: 2rem;
+  border-radius: 5px;
+}
+
+.how-it-works > h2{
+  text-align: center;
+}
+
+.how-it-works > ul {
+  text-align: left;
+}
+
+li {
+  padding:20px;
+  font-size: 20px;
+}
+
+.nums{
+  text-align: center;
+  color:white;
+  padding:10px;
+  margin: 20px;
+  font-size: 2rem;
+}
+
+.get-connected{
+  margin-bottom: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.get-connected, p {
+  padding:40px;
 }
 
 .connected-main{
@@ -48,14 +111,16 @@ p{
   justify-content: space-between;
 }
 
+.rental-container{
+  max-width: 70%;
+}
+
 #rental-form-container{
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 3px solid black;
-  border-radius: px;
-  margin:20px;
-  width:100%;
+  border: 3px solid white;
+  margin-bottom: 2rem;
 }
 
 .rental-header{
@@ -75,11 +140,51 @@ input, label, select{
   font-size:1.4rem;
 }
 
-
 .nft-img-container{
   width:45%;
 }
 .nft-img{
   width:100%;
   border-radius: 1px;
+}
+
+.driver-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 3px solid white;
+  margin-bottom: 2rem;
+}
+
+.driver-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contract-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid white;
+}
+
+.contract-details{
+  display:flex;
+  flex-direction: column;
+}
+
+.contract-details > p {
+  padding:0;
+}
+
+.final-contract-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.final-contract-container > p {
+  padding:4px;
+  margin:.5rem;
 }

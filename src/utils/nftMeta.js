@@ -1,8 +1,5 @@
 
 export default function createNFTMetadata(formData){
-    // address = users address, driversAddress = renters address
-    // const { selectedCar, driverAddress} = formData;
-    console.log("Form Data as its passed into CreateNFTMeta: ",formData)
     
     function getCarMMY(metadata) {
         try {
@@ -14,16 +11,18 @@ export default function createNFTMetadata(formData){
         }
     }
 
+    const imageUrl = "https://i.imgur.com/Nkuu1f2.gif"
+
     return {
         name: "PredictaDrive Insurance",
         description: `Rental agreement for ${getCarMMY(formData.selectedCar.metadata)}`,
-        // TODO: Generate an image 
-        image: formData.image,
+        image: imageUrl,
         attributes: [
             { trait_type: "Owner Address", value: formData.address },
             { trait_type: "Vehicle Name", value: getCarMMY(formData.selectedCar.metadata) },
             { trait_type: "Start Date", value: formData.startDate },
             { trait_type: "End Date", value: formData.endDate },
+            { trait_type: "Drivers Name", value: formData.driverName},
             { trait_type: "Drivers Address", value: formData.driverAddress },
             { trait_type: "Vehicle Token ID", value: formData.selectedCar.token_id }
         ]

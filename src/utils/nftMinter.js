@@ -2,16 +2,17 @@ import { ethers } from 'ethers';
 
 const NFT_ABI = [
     "function mintNFT(string memory tokenURI) public returns (uint256)",
-    "function tokenURI(uint256 tokenId) public view returns (string memory)"
-  ];
+    "function tokenURI(uint256 tokenId) public view returns (string memory)",
+    "function totalSupply() public view returns (uint256)"
+];
 
-//   NEED TO TEST - This is on Sepolia
-const NFT_CONTRACT_ADDRESS = "0xAc755578ed07193544E046037A1CA5Ff9098dCCc";
+// Sepolia contract for testing 
+const NFT_CONTRACT_ADDRESS = "0xc1305b50cD2d52EB1d8d6D089aF0957E843F4884";
 
 export async function mintNFT(metadata) {
     if (typeof window.ethereum === 'undefined') {
         console.log("Not detecting eth/metamask");
-        return { success: false, error: "Eth/Metamask not found"};
+        return { success: false, error: "Eth/Metamask not found" };
     }
 
     try {
@@ -25,15 +26,15 @@ export async function mintNFT(metadata) {
         const tokenURI = `data:application/json;base64,${encodedMetadata}`;
 
         const transaction = await contract.mintNFT(tokenURI);
+        console.log("Transaction sent:", transaction.hash);
         const receipt = await transaction.wait();
-        const event = receipt.events.find(event => event.event === 'Transfer');
-        const tokenId = event.args.tokenId.toNumber();
+        console.log("Transaction confirmed:", receipt);
 
-        console.log("NFT minted successfully: ", {
-            tokenId: tokenId,
-            transactionHash: receipt.transactionHash,
-            tokenURI: tokenURI
-        });
+        // Get the total supply after minting
+        const totalSupply = await contract.totalSupply();
+        const tokenId = totalSupply.toString();
+
+        console.log("NFT minted successfully with tokenId:", tokenId);
 
         return {
             success: true,
@@ -41,11 +42,11 @@ export async function mintNFT(metadata) {
             transactionHash: receipt.transactionHash,
             tokenURI: tokenURI
         };
-    } catch (error){
+    } catch (error) {
         console.error("Error minting the NFT:", error);
         return {
             success: false,
-            error: error
+            error: error.message
         };
     }
 }
